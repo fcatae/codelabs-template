@@ -24,7 +24,7 @@ npm install
 
 ```
 
-# Serve 
+# Open codelabs folder and build Codelabs page from Google Doc ID 
 cd codelabs
 claat export <Google Doc ID>
 
@@ -34,7 +34,7 @@ claat export <Google Doc ID>
 
 ```
 
-# Serve 
+# Compile and host a local instance of the site that can be viewed at http://localhost:8000 
 gulp serve
 
 ```
@@ -43,7 +43,7 @@ gulp serve
 
 ```
 
-# Serve 
+# Build static site pages into the  /dist folder 
 gulp dist
 
 ```
