@@ -245,7 +245,7 @@ gulp.task('build', gulp.series(
 // copy copies the built artifacts in build into dist/
 gulp.task('copy', (callback) => {
   // Explicitly do not use gulp here. It's too slow and messes up the symlinks
-  fs.rename('build', 'docs', callback);
+  fs.rename('build', 'dist', callback);
 });
 
 // minify:css minifies the css
