@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-03T15:33:33Z",
+  "id": "es-m4-proxy-api",
+  "duration": 0,
+  "title": "M4: Proxy del API Omni Canal",
+  "authors": "Andre Strenger",
+  "summary": "En esta primera práctica de laboratorio, utilizará Anypoint Studio para crear una aplicación Mule donde habrá un flujo para cada método de cada recurso (es decir, GET).",
+  "source": "16D2nCfnhStfMZ4T8tIrFxBjiLKHH_YP3_1HeJqIbxKo",
+  "theme": "web",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Web"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://github.com/fcatae",
+  "url": "es-m4-proxy-api"
+}
