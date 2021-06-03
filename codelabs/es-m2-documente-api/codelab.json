@@ -1,0 +1,25 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2021-06-03T15:21:27Z",
+  "id": "es-m2-documente-api",
+  "duration": 0,
+  "title": "M2: Documente su API",
+  "authors": "Andre Strenger",
+  "summary": "Busquemos nuestra API en Exchange y agreguemos más a nuestra documentación de API.",
+  "source": "1rlEnzCpzrHmOqBYiaAwBadIglE5wyNLs_gr4rdlUVN0",
+  "theme": "web",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "Web"
+  ],
+  "tags": [
+    "web"
+  ],
+  "feedback": "https://github.com/fcatae",
+  "url": "es-m2-documente-api"
+}
