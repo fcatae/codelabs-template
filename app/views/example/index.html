@@ -12,26 +12,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Codelabs provide a guided, tutorial, hands-on coding experience. Most codelabs will step you through the process of building a small application, or adding a new feature to an existing application.">
+  <meta name="description" content="{{view.description}}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="generator" content="MuleSoft Codelabs">
-  <meta name="application-name" content="MuleSoft Codelabs">
-  <link rel="canonical" href="https://www.mulesoft.com/" />
+  <meta name="generator" content="{{view.title}}">
+  <meta name="application-name" content="{{view.title}}">
+  <link rel="canonical" href="{{canonicalViewUrl(view)}}" />
   <link rel="preconnect" href="https://www.google-analytics.com" />
 
   <script>
     window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-    ga('create', 'UA-172158109-1', 'auto');
+    ga('create', '{{ga}}', 'auto');
     ga('send', 'pageview');
-    
+    {% if view.ga %}
+    ga('create', '{{view.ga}}', 'auto', { name: 'view' });
+    ga('view.send', 'pageview');
+    {% endif %}
   </script>
   <script async src='https://www.google-analytics.com/analytics.js'></script>
 
-  <title>MuleSoft Codelabs</title>
+  <title>{{view.title}}</title>
 
   <link rel="stylesheet" href="/styles/main.css">
 
-  
+  {% if view.customStyle %}
+    <link rel="stylesheet" href="{{view.customStyle}}">
+  {%- endif %}
 
   <link rel="import" href="/elements/elements.html">
 
@@ -55,7 +60,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="#455a64">
-  <meta name="apple-mobile-web-app-title" content="MuleSoft Codelabs">
+  <meta name="apple-mobile-web-app-title" content="{{view.title}}">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="194x194" href="/images/favicons/favicon-194x194.png">
@@ -68,9 +73,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="theme-color" content="#455a64">
 
   <meta name="og:type" property="og:type" content="website" />
-  <meta name="og:title" property="og:title" content="MuleSoft Codelabs" />
-  <meta name="og:description" property="og:description" content="Codelabs provide a guided, tutorial, hands-on coding experience. Most codelabs will step you through the process of building a small application, or adding a new feature to an existing application." />
-  <meta name="og:url" property="og:url" content="https://www.mulesoft.com/" />
+  <meta name="og:title" property="og:title" content="{{view.title}}" />
+  <meta name="og:description" property="og:description" content="{{view.description}}" />
+  <meta name="og:url" property="og:url" content="{{canonicalViewUrl(view)}}" />
   <meta name="og:site_name" property="og:site_name" content="Codelabs" />
   <meta name="og:determiner" property="og:determiner" content="the" />
   <meta name="og:locale" property="og:locale" content="en_US" />
@@ -82,15 +87,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <meta name="og:image:alt" property="og:image:alt" content="Codelabs" />
 
   <meta name="twitter:card" property="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" property="twitter:title" content="MuleSoft Codelabs" />
-  <meta name="twitter:description" property="twitter:description" content="Codelabs provide a guided, tutorial, hands-on coding experience. Most codelabs will step you through the process of building a small application, or adding a new feature to an existing application." />
+  <meta name="twitter:title" property="twitter:title" content="{{view.title}}" />
+  <meta name="twitter:description" property="twitter:description" content="{{view.description}}" />
   <meta name="twitter:image" property="twitter:image" content="/images/og-image.png" />
-  <meta name="twitter:url" property="twitter:url" content="https://www.mulesoft.com/" />
+  <meta name="twitter:url" property="twitter:url" content="{{canonicalViewUrl(view)}}" />
 </head>
 
-<body id="app" is="body-bind" class="loading fullbleed ">
+<body id="app" is="body-bind" class="loading fullbleed {% if view.id != 'default' -%}view{%- endif -%}">
   <paper-header-panel id="main" mode="standard" main>
-    
+    {% raw %}
     <div id="mainToolbar" class="paper-header">
       <div class="site-width layout horizontal">
         <a href="/">
@@ -105,20 +110,30 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </div>
       </div>
     </div>
-    
+    {% endraw %}
 
-    
-    <header id="banner" down$="[[_toBoolean(selectedFilter)]]">
+    {# Event pages force down attribute. On homepage, it's applied dynamically. #}
+    <header id="banner" {% if view.id != 'default' -%}down{%- else %}down$="[[_toBoolean(selectedFilter)]]"{%- endif %}>
       <div class="site-width">
-        
+        {% if view.id == 'default' %}
         <h2 class="banner-title">MuleSoft LATAM API-Led Connectivity Workshop</h2>
         <div class="banner-description"
-             data-filter-selected$="[[_toBoolean(selectedFilter)]]">
+             data-filter-selected$="{% raw %}[[_toBoolean(selectedFilter)]]{% endraw %}">
           <p class="banner-info">
             Welcome to MuleSoft LATAM API-Led Connectivity Workshop Codelabs. This site provides guides, tutorials, and hands-on
             coding experiences around MuleSoft. Most labs will step you through the process
             of building a small Mule application or show you how to configure a specific component.
           </p>
+        {%- else -%}
+          <div class="banner-description">
+            <img id="logo" src="{{view.logoUrl}}" alt="Event logo">
+            <div class="banner-meta">
+              <h3>{{view.title}}</h3>
+              {% if view.description -%}
+                <p>{{view.description}}</p>
+              {%- endif %}
+            </div>
+        {%- endif %}
           </div>
       </div>
     </header>
@@ -133,7 +148,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           </paper-tabs>
         </div>
 
-        
+        {% if view.id == 'default' %}
         <paper-dropdown-menu
           label="Choose an event"
           class="dropdown-filter"
@@ -144,12 +159,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             id="eventList"
             slot="dropdown-content"
             class="dropdown-content"
-          ><a href="/example/" tabindex="-1">
-                  <paper-item>MuleSoft Codelabs</paper-item>
+          >
+            {%- for view in views -%}
+              {%- if view.id != 'default' && !view.hidden -%}
+                <a href="/{{view.url}}/" tabindex="-1">
+                  <paper-item>{{view.title}}</paper-item>
                 </a>
-              
+              {%- endif -%}
+            {%- endfor %}
           </paper-listbox>
         </paper-dropdown-menu>
+        {% endif %}
+
+        {%- if showcats -%}
         <paper-dropdown-menu
           label="Filter by category"
           class="dropdown-filter"
@@ -163,98 +185,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             on-iron-activate="onCategoryActivate"
             attr-for-selected="filter"
           >
-              <paper-item filter="Latam">Latam</paper-item>
-                <paper-item filter="Web">Web</paper-item>
-                
+              {% for category in categories -%}
+                {%- if categoryHasShowableCodelabs(category, codelabs) -%}
+                  <paper-item filter="{{category}}">{{category}}</paper-item>
+                {%- endif -%}
+              {%- endfor %}
           </paper-listbox>
-        </paper-dropdown-menu></div>
+        </paper-dropdown-menu>
+        {%- endif -%}
+      </div>
 
       <card-sorter id="cards" class="site-width">
-        
-          
-            
-            <a href="/codelabs/es-m4-proxy-api/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-latam"
-               data-category="Latam"
-               data-title="M4: Proxy del API Omni Canal"
-               data-duration="0"
-               data-updated="2021-06-08T02:10:03Z"
-               data-tags="workshop latam"
-               data-pin="">
-              <div class="description">M4: Proxy del API Omni Canal</div>
+        {% for codelab in codelabs -%}
+
+          {# Only filter hidden codelabs from the default view.
+             All other views are explicitly opt-in via metadata. #}
+          {% if codelab.status.indexOf('hidden') === -1 || view.id !== 'default' %}
+            {% set cat = levelledCategory(codelab, view.catLevel) %}
+            <a href="{{codelabUrl(view, codelab)}}" on-tap="navigate"
+               class="codelab-card category-{{categoryClass(codelab, cat.level)}}"
+               data-category="{{codelab.category}}"
+               data-title="{{codelab.title}}"
+               data-duration="{{codelab.duration}}"
+               data-updated="{{codelab.updated}}"
+               data-tags="{{codelab.tags}}"
+               data-pin="{{codelabPin(view, codelab)}}">
+              {%- if codelabPin(view, codelab) -%}
+                <div class="card-pin"></div>
+              {%- endif -%}
+              <div class="description">{{codelab.title}}</div>
               <div class="card-duration">
-                <span></span>
-                <span>Updated Jun 8, 2021</span>
+                <span>{%- if codelab.duration -%}{{codelab.duration}} min {%- endif -%}</span>
+                <span>{%- if codelab.updated -%}Updated {{codePrettyDate(codelab.updated)}}{%- endif -%}</span>
               </div>
               <div class="card-footer">
-                <div class="category-icon latam-icon"></div>
-                <paper-button class="latam-bg">Start</paper-button>
+                <div class="category-icon {{categoryClass(codelab, cat.level)}}-icon"></div>
+                <paper-button class="{{categoryClass(codelab, cat.level)}}-bg">Start</paper-button>
               </div>
             </a>
-          
-          
-            
-            <a href="/codelabs/es-m1-disenar-api/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-web"
-               data-category="Web"
-               data-title="M1: Diseñar una especificación para la API"
-               data-duration="0"
-               data-updated="2021-06-03T15:20:40Z"
-               data-tags="web"
-               data-pin="">
-              <div class="description">M1: Diseñar una especificación para la API</div>
-              <div class="card-duration">
-                <span></span>
-                <span>Updated Jun 3, 2021</span>
-              </div>
-              <div class="card-footer">
-                <div class="category-icon web-icon"></div>
-                <paper-button class="web-bg">Start</paper-button>
-              </div>
-            </a>
-          
-          
-            
-            <a href="/codelabs/es-m2-documente-api/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-web"
-               data-category="Web"
-               data-title="M2: Documente su API"
-               data-duration="0"
-               data-updated="2021-06-03T15:21:27Z"
-               data-tags="web"
-               data-pin="">
-              <div class="description">M2: Documente su API</div>
-              <div class="card-duration">
-                <span></span>
-                <span>Updated Jun 3, 2021</span>
-              </div>
-              <div class="card-footer">
-                <div class="category-icon web-icon"></div>
-                <paper-button class="web-bg">Start</paper-button>
-              </div>
-            </a>
-          
-          
-            
-            <a href="/codelabs/es-m3-implementar-api/index.html?index=..%2F..index" on-tap="navigate"
-               class="codelab-card category-web"
-               data-category="Web"
-               data-title="M3: Implementar la API de Omni Channel en Studio"
-               data-duration="0"
-               data-updated="2021-06-03T15:31:18Z"
-               data-tags="web"
-               data-pin="">
-              <div class="description">M3: Implementar la API de Omni Channel en Studio</div>
-              <div class="card-duration">
-                <span></span>
-                <span>Updated Jun 3, 2021</span>
-              </div>
-              <div class="card-footer">
-                <div class="category-icon web-icon"></div>
-                <paper-button class="web-bg">Start</paper-button>
-              </div>
-            </a>
-          
+          {%- endif %}
+        {%- endfor %}
       </card-sorter>
 
       <div id="loading-placeholder" class="site-width">
@@ -305,6 +275,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </paper-header-panel>
 
-  <script src="/scripts/main.js"></script>
+  <!-- build:js /scripts/main.js -->
+  <script src="bower_components/url-search-params-polyfill/build/url-search-params.js"></script>
+  <script src="scripts/app.js"></script>
+  <!-- endbuild-->
 </body>
 </html>

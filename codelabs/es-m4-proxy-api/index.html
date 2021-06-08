@@ -27,6 +27,18 @@
                   environment="web"
                   feedback-link="https://github.com/fcatae">
     
+      <google-codelab-step label="Proxy del API Omni Canal" duration="0">
+        <h2 is-upgraded>Descripción general</h2>
+<p>La gestión de API es esencial para una arquitectura API-Led, ya que proporciona un marco de gobierno a sus API en las tres capas. Para que se lleve a cabo la gestión de API, debemos poder alojar nuestras API, tanto nuevas como existentes, en una puerta de enlace de API que se utilizará para hacer cumplir las políticas y recopilar datos para análisis.</p>
+<p>MuleSoft puede aplicar la gobernanza directamente a una API implementada por MuleSoft a través de una puerta de enlace proxy para estas y otras API externas existentes.</p>
+<p>Las API que usaremos son dos versiones de la API de Omni Channel. Creará una puerta de enlace proxy para una implementación simulada ya implementada en este laboratorio.</p>
+<p>En este laboratorio, definiremos una API que actuará como un proxy para la API Omni Channel de Mythical Corporation. El proxy se implementará en API Gateway de Anypoint Platform, que funciona con el Mule Runtime. El Mule Runtime puede ejecutarse en las instalaciones on premises, en una nube privada o en el servicio CloudHub alojado por Anypoint Platform. En este escenario, usaremos el último, CloudHub.</p>
+<p>Los clientes accederán a la API a través de API Gateway, que luego enviará las solicitudes a la implementación simulada de la API de Omni Channel. Tener el proxy implementado en la puerta de enlace API permite a Anypoint Platform administrar, controlar el acceso y monitorear el uso de la API, que veremos en los laboratorios posteriores.</p>
+<p class="image-container"><img alt="module 5 lab 1 summary diagram" style="width: 779.50px" src="img/bce8f5a32f1366c3.png"></p>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="Vaya al Administrador de API" duration="0">
         <ol type="1" start="1">
 <li>en Anypoint Platform (<a href="https://anypoint.mulesoft.com/" target="_blank">https://anypoint.mulesoft.com</a>), haga clic en el icono <strong>API Manager</strong> para comenzar a gestionar su API.<br><img alt="module 5 lab 1 click apimanager" style="width: 838.50px" src="img/1ee16e26e9f6a746.png"></li>
@@ -45,7 +57,7 @@
 <li>Configurar la API con la siguiente información:</li>
 </ol>
 <ol type="1" start="1">
-<li><strong>API Name</strong>I:<code>Experiencia</code> <code>Omni Canal</code>.Observe que cuando comienza a escribir el nombre, el campo se completa automáticamente.</li>
+<li><strong>API Name</strong>I:<code>Experiencia</code> <code>Omni Channel</code>.Observe que cuando comienza a escribir el nombre, el campo se completa automáticamente.</li>
 <li><strong>Asset Type</strong>: seleccione de la lista desplegable <code>RAML/OAS</code>.</li>
 <li><strong>API Version</strong>: seleccione de la lista desplegable <code>1.0.0</code>.</li>
 <li><strong>Asset Version</strong>: seleccione de la lista desplegable <code>1.0.0</code>.</li>
@@ -83,15 +95,15 @@
         <p>Para probar la administración de políticas, agregará una Política <strong>Rate limiting </strong> sobre  la API.</p>
 <ol type="1" start="1">
 <li>Vaya a la página de administración de la API de Omni Channel.</li>
-<li>Haga clic en la pestaña Políticas debajo de las definiciones de API.<br><img alt="module5 lab2 ap apimanager policies" style="width: 845.50px" src="img/368551f49dd5987.png"></li>
+<li>Haga clic en la pestaña <strong>Policies</strong> debajo de los contratos de API.<br><img alt="module5 lab2 ap apimanager policies" style="width: 845.50px" src="img/368551f49dd5987.png"></li>
 <li>Haga clic en el botón <strong>Apply new policy</strong>.<br><img alt="module5 lab2 ap apimanager policies applyRateLimiting1" style="width: 827.50px" src="img/3a953d23b4dc1.png"></li>
-<li>Haga clic en la política de rate limiting, seleccione la versión y <strong>Configure policy</strong>.<br><img alt="module5 lab2 ap apimanager policies applyRateLimiting2" style="width: 781.50px" src="img/4e99a507b9d832b3.png"></li>
+<li>Haga clic en la política de <strong>Rate Limiting</strong>, seleccione la versión y <strong>Configure policy</strong>.<br><img alt="module5 lab2 ap apimanager policies applyRateLimiting2" style="width: 781.50px" src="img/4e99a507b9d832b3.png"></li>
 <li>Ingrese un máximo de solicitudes de 3 por 1 minuto como se muestra y haga clic en <strong>Apply</strong>.<br><img alt="module5 lab2 ap apimanager policies configRateLimiting" style="width: 789.50px" src="img/544fdfbb4d64cc63.png"></li>
-<li>Debería ver la política de limitación de tarifas ahora en Políticas aplicadas.<br><img alt="module 5 lab2 ap apimanager appliedPolicy ratelimiting" style="width: 737.50px" src="img/93e2b91acb0a4e27.png"></li>
-<li>Espere un minuto (API Gateway recibe actualizaciones de políticas cada 60 segundos de forma predeterminada). También puede verificar que su API haya recibido la nueva política mirando los registros. Busque en la pestaña de registros en <strong>Runtime Manager</strong> para su aplicación. Busque mensajes de registro similares a los siguientes <strong>com.mulesoft.module.policies.</strong>:<br><img alt="module5 lab2 select runtime manager" style="width: 725.50px" src="img/b12eac003f799888.png"><br><br><img alt="module 5 lab 1a logs" style="width: 753.83px" src="img/44c647bce5bf504a.png"></li>
+<li>Debería ver la política de <strong>Rate Limiting</strong> en Políticas aplicadas.<br><img alt="module 5 lab2 ap apimanager appliedPolicy ratelimiting" style="width: 737.50px" src="img/93e2b91acb0a4e27.png"></li>
+<li>Espere un minuto (API Gateway recibe actualizaciones de políticas cada 60 segundos de forma predeterminada).<br><br></li>
 <li>Pruebe la API usando Postman o cualquier otra herramienta de prueba de API y acceda a su URL de proxy agregando<strong> /products/search</strong> al final (por ejemplo, http: // &lt;nombredeusuario&gt; -proxy-omni-channel.us-e2.cloudhub.io/products/search ).<br><img alt="module 5 lab2 browser json response ratelimiting" style="width: 864.50px" src="img/24bb56cfd7c24e72.png"></li>
 <li>Pruébelo nuevamente presionando el <strong>Send</strong> botón <strong>3 veces</strong>.</li>
-<li>En la tercera invocación, recibirá un mensaje de error que indica que <strong>se ha excedido la cuota</strong>. Esto demuestra que se ha aplicado su política de limitación de tarifas.<br><img alt="module 5 lab2 browser json response fail ratelimiting" style="width: 771.50px" src="img/305134ddeed854b6.png"></li>
+<li>En la tercera invocación, recibirá un mensaje de error que indica que <strong>se ha excedido la cuota</strong>. Esto demuestra que se ha aplicado su política de <strong>Rate limiting</strong>.<br><img alt="module 5 lab2 browser json response fail ratelimiting" style="width: 771.50px" src="img/305134ddeed854b6.png"></li>
 </ol>
 
 
