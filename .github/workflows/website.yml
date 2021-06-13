@@ -1,4 +1,4 @@
-name: Gulp Dist (DEV)
+name: Website - Publish Content
 
 on:
   workflow_dispatch:
