@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Download Source Code (git)
         uses: actions/checkout@v2
-          with:
-            ref: dev
+        with:
+          ref: dev
             
       - name: Generate Code Labs Content
         uses: ./.github/actions/claat
