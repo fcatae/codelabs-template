@@ -1,4 +1,4 @@
-name: (ES) es-m2-documente-api
+name: (ES) m2-documente-api
 
 on:
   workflow_dispatch:
