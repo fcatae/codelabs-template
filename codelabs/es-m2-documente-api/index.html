@@ -27,12 +27,48 @@
                   environment="web"
                   feedback-link="https://github.com/fcatae">
     
+      <google-codelab-step label="Documente su API" duration="0">
+        <p>Como se demostró , publicar su API en Exchange es tan fácil como unos pocos clics. Sin embargo, <strong><em>Exchange</em></strong> acaba de capturar los atributos básicos y la documentación para su API en este momento. Asegurarse de que su API sea fácil de encontrar y &#34;lista para el autoservicio&#34; es su responsabilidad como diseñador de API. Busquemos nuestra API en <strong><em>Exchange</em></strong> y agreguemos más a nuestra documentación de API.</p>
+<ol type="1" start="1">
+<li>Navegue a <strong><em>Exchange</em></strong>  desde el &#34;menú de hamburguesa&#34; en la esquina superior izquierda de<strong><em> Design Center</em></strong><em>.</em></li>
+</ol>
+<p class="image-container"><img alt="module1 lab3 navigate to exchange" style="width: 382.23px" src="img/3eb052766f4393ad.png"></p>
+<p class="image-container"><img alt="module1 lab3 navigate to exchange2" style="width: 380.11px" src="img/b3a8a2e2e044f49d.png"></p>
+<ol type="1" start="2">
+<li>Utilice la barra de búsqueda para encontrar su AP,I si no está fácilmente visible en la lista de activos de <strong>Exchange</strong>. Haga clic en su API una vez que la encuentre:<br><img alt="module1 lab3 exchange assets select" style="width: 771.50px" src="img/4b4b2285929acafb.png"></li>
+<li>Haga clic en cualquiera de los botones &#34;<strong>Edit</strong>&#34; para iniciar el modo de edición.<br><img alt="module1 lab3 exchange edit" style="width: 768.00px" src="img/dc61fe36c7bfda9f.png">Cree su propia documentación para su API o copie el siguiente texto en el editor:</li>
+</ol>
+<pre><code>** Omni Channel Experience API * * se utiliza para simplificar el acceso a los pedidos, los productos y las funciones del carrito de la compra necesarios para las aplicaciones móviles y de comercio electrónico.
+
+Los desarrolladores que lo requieran pueden componer fácilmente aplicaciones innovadoras aprovechando esta API para hacer lo siguiente:
+
+ - Recuperar el catálogo de productos y los detalles sobre un producto
+ - Agregar productos a un carrito de compras con estado
+ - Buscar pedidos y recuperar su estado
+ - Crear un nuevo pedido</code></pre>
+<p class="image-container"><img alt="module1 lab3 exchange editor markdown" style="width: 900.50px" src="img/6c203094f805216c.png"><br><br></p>
+<ol type="1" start="4">
+<li>Haga clic en el botón &#34;<strong>Save as draft</strong>&#34; en la parte inferior de la pantalla. Su borrador de la documentación de la API se guarda pero no se publica hasta que &#34;<strong>Publica</strong>&#34; formalmente las actualizaciones finales en <strong>Exchange</strong>, así que siéntase libre de guardar varios borradores mientras crea su documentación.<br><img alt="module1 lab3 exchange editor draft page" style="width: 771.50px" src="img/b79642ba724e0caa.png"></li>
+</ol>
+<ul>
+<li>Puede presionar <strong>Publish, Discard draft</strong> o <strong>Exit draft.</strong></li>
+<li><strong>Publish</strong>: publicar cambios en la documentación para intercambiarlos.</li>
+<li><strong>Discard draf</strong>: desechar los cambios.</li>
+<li><strong>Exit draft</strong>: mantener los cambios, pero no publicarlos en Exchange.</li>
+</ul>
+<ol type="1" start="5">
+<li>Presione el botón <strong>Publish</strong>. ¡Sus cambios en la documentación ahora son visibles en <strong><em>Exchange</em></strong>!<br><img alt="module1 lab3 exchange editor final page" style="width: 820.85px" src="img/b8f55d6d2044d950.png"><br>La documentación de <strong>Exchange</strong> puede constar de varias páginas. Hasta ahora acabamos de crear la página de inicio de nuestra API.<br>Es una práctica común incluir enlaces a otro contenido como tutoriales en video en nuestra documentación de <strong>Exchange</strong>. Esto facilita que el desarrollador interesado obtenga acceso a toda la documentación necesaria para aprender a utilizar la API.</li>
+</ol>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="Valide la API" duration="0">
         <p>Al igual que en el <strong>Design Center</strong>, en <strong>Exchange</strong> puede consultar el <strong>API Summary</strong>. El <strong>API Summary</strong> le brinda la oportunidad de realizar una solicitud y llamar al servicio simulado o una implementación de la API.</p>
 <p>Vamos a ver cómo se puede hacer.</p>
 <ol type="1" start="1">
 <li>Vaya al <strong>API Summary<br></strong><img alt="module1 lab4 exchange api summary" style="width: 775.50px" src="img/e29a01398d792e16.png"></li>
-<li>Presione <strong>/products/search </strong><code>[GET]<br></code><img alt="module1 lab4 exchange product search" style="width: 792.50px" src="img/8c80ba01c055099d.png"></li>
+<li>Presione <strong>/products/search [GET]<br></strong><img alt="module1 lab4 exchange product search" style="width: 792.50px" src="img/8c80ba01c055099d.png"></li>
 <li>En el lado derecho del panel verá el método <strong>GET</strong> al que se llamará.<br>Puede seleccionar de una lista combinada de puntos finales de implementación disponibles para llamar. En este caso solo tenemos el servicio simulado y lo que se define en la especificación.Puede ver los <strong>parámetros</strong> y <strong>encabezados</strong> cómo se completan.<br>En la pestaña <strong>parameters</strong>, opcionalmente, puede hacer clic en la casilla de verificación y ver todos los parámetros opcionales que se pueden enviar.<br><img alt="module1 lab4 product search" style="width: 740.50px" src="img/159ce7bfde8d1dda.png"></li>
 <li>Presione <strong>Send</strong> y vea qué sucede.<br><img alt="module1 lab4 exchange product search response" style="width: 453.84px" src="img/c5679a55d060c84c.png"><br>Puedes ver la respuesta simulada y puedes ver:</li>
 </ol>
