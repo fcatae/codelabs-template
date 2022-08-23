@@ -3,13 +3,13 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2022-08-19T12:23:23Z",
+  "updated": "2022-08-23T14:46:48Z",
   "id": "es-m3-implementar-api",
   "duration": 0,
-  "title": "M3: Implementar la API de Omni Channel en Studio",
+  "title": "Implementar la API de Omni Channel en Studio",
   "authors": "Andre Strenger",
   "summary": "En esta primera práctica de laboratorio, utilizará Anypoint Studio para crear una aplicación Mule donde habrá un flujo para cada método de cada recurso (es decir, GET).",
-  "source": "1eMfJUG9VJe9mgRfzbREcchUBtPdaNTerLzeeYX7ApKo",
+  "source": "1wk637-L3_VW8kQwAf7ly_JpxJmsppf2iQnZGfxEV_ss",
   "theme": "web",
   "status": [
     "published"
