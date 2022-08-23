@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>Implementar la API de Omni Channel en Studio</title>
+  <title>M3: Implementar la API de Omni Channel en Studio</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
@@ -23,7 +23,7 @@
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
   <google-codelab codelab-gaid=""
                   id="es-m3-implementar-api"
-                  title="Implementar la API de Omni Channel en Studio"
+                  title="M3: Implementar la API de Omni Channel en Studio"
                   environment="web"
                   feedback-link="https://github.com/fcatae">
     
@@ -113,7 +113,7 @@ WHERE BillingCountry = &#39;BR&#39;         </code></pre>
 <li>Haga clic en <strong>Transform Message </strong>y verá una transformación de Dataweave. en los paneles de entrada y salida. Puede arrastrar y soltar cada campo de la solicitud (objeto de Salesforce) a la salida.<img style="width: 624.00px" src="img/43544e3d5c9846ee.png"></li>
 </ol>
 <ol type="1" start="3">
-<li>Este es el código de mapeo que puede usar. Puede copiarlo y pegarlo en su editor de texto Dataweave y la interfaz de usuario reflejará los cambios</li>
+<li>Este es el código de mapeo que puede usar. Puede copiarlo y pegarlo en su editor de texto Dataweave y en la interfaz de usuario reflejará los cambios</li>
 </ol>
 <pre><code>%dw 2.0
 output application/json
@@ -121,7 +121,7 @@ output application/json
 [{
         Name: payload.Name,
         BillingStreet: payload.billingAddress.Address1,
-        BillingCity: payload.billingAddress.Ciudad,
+        BillingCity: payload.billingAddress.City,
         BillingState: payload.billingAddress.State,
         BillingPostalCode: payload.billingAddress.PostalCode,
         BillingCountry: payload.billingAddress.Country,
