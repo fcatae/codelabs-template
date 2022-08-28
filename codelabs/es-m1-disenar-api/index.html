@@ -74,12 +74,12 @@
         <p>En el paso anterior, creamos un recurso de recopilación de pedidos y un método <strong>POST</strong> para permitir que la aplicación de comercio electrónico cree una nueva instancia de pedido. ¿Qué pasaría si quisiéramos que la aplicación de comercio electrónico obtenga el estado de un solo pedido? Necesitamos crear un nuevo recurso debajo de la instancia de <strong>/order</strong> y usar el método <strong>GET</strong>.</p>
 <ol type="1" start="1">
 <li>Pase el cursor del mouse sobre el recurso <strong>/order</strong>. Notará que un <strong><code>+</code></strong> aparece en el panel de recursos.</li>
-<li>Cambie el nombre de <strong>/order/new-resource</strong> a <code>/order/{order_id}</code>.<br><br><img alt="module1 lab2 add nested resource" style="width: 789.50px" src="img/b19f4185d1f2769.gif"><br></li>
+<li>Cambie el nombre de <strong>/order/new-resource</strong> a <code>/order/{order_id}</code>.<br><br><img alt="module1 lab2 add nested resource" style="width: 685.50px" src="img/b19f4185d1f2769.gif"><br></li>
 <li>Como hicimos en el paso anterior, ingrese una descripción: <code>Order instance resource allowing to retrieve an order</code><img style="width: 710.98px" src="img/a7864bcb9dce7f7a.png"><br></li>
 <li>Bajo el método <strong>GET</strong>, haga clic en la pestaña <strong>Responses</strong>, luego haga clic en el botón <strong>Add New Response.<br><br></strong><img style="width: 715.29px" src="img/5536e894b751a401.png"><br></li>
 <li>Ahora debería ver una respuesta con un código de respuesta 200 OK.<br><br><img style="width: 715.20px" src="img/a7b5c9b310782bfd.png"><br></li>
 <li>Debajo de la respuesta, haz clic en <strong>Add Body</strong> para agregar una respuesta JSON al método <strong>GET</strong>.<br><br><img style="width: 713.29px" src="img/93024362a978a6.png"><br></li>
-<li>Observe la especificación RAML a la derecha actualizada con el cuerpo.<br><br><img style="width: 716.92px" src="img/e6118d2b5b2204e2.png"><br></li>
+<li>Observe la especificación RAML a la derecha actualizada con el cuerpo.<br><br><img style="width: 703.50px" src="img/e6118d2b5b2204e2.png"><br></li>
 <li>Agreguemos un JSON de ejemplo a la respuesta. Necesitamos expandir la sección &#34;<strong>Bodies</strong>&#34; haciendo clic en &#34;<strong>Details</strong>&#34;.<br><br><img style="width: 709.09px" src="img/ebdbb2d1c52a7c0e.png"><br></li>
 <li>Una vez expandida, verá la sección &#34;<strong>Example</strong>&#34;.<br><br><img style="width: 716.69px" src="img/a7a8be7206994d19.png"><br></li>
 </ol>
